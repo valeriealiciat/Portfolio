@@ -1,0 +1,559 @@
+
+R version 4.0.4 (2021-02-15) -- "Lost Library Book"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin17.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[R.app GUI 1.74 (7936) x86_64-apple-darwin17.0]
+
+[Workspace restored from /Users/valleriealiciat/.RData]
+[History restored from /Users/valleriealiciat/.Rapp.history]
+
+
+> marij.data<-read.csv("/Users/valleriealiciat/Downloads/marij.csv")
+> attach(marij.data)
+The following object is masked _by_ .GlobalEnv:
+
+    marij
+
+> head(marij.data,12)
+   marij spon temp  X X.1
+1      0  147  0.4 NA  NA
+2      0   92 -1.0 NA  NA
+3      0   95  0.0 NA  NA
+4      0  119  1.2 NA  NA
+5      0   82  0.6 NA  NA
+6      0   81  0.3 NA  NA
+7      0   46  0.2 NA  NA
+8      0   61  0.5 NA  NA
+9      0   92  0.9 NA  NA
+10     0   52 -0.9 NA  NA
+11     0   47 -2.2 NA  NA
+12     0   55 -0.7 NA  NA
+> summary(marij.data)
+     marij           spon            temp           X          
+ Min.   : 0.0   Min.   :  0.0   Min.   :-6.400   Mode:logical  
+ 1st Qu.: 1.0   1st Qu.: 20.0   1st Qu.:-4.500   NA's:62       
+ Median : 2.5   Median : 54.0   Median :-2.400                 
+ Mean   : 3.7   Mean   : 82.7   Mean   :-2.385                 
+ 3rd Qu.: 5.0   3rd Qu.:111.0   3rd Qu.:-0.325                 
+ Max.   :10.0   Max.   :969.0   Max.   : 1.600                 
+ NA's   :2      NA's   :1       NA's   :2                      
+      X.1        
+ Min.   :-2.385  
+ 1st Qu.: 1.102  
+ Median :30.754  
+ Mean   :31.764  
+ 3rd Qu.:61.416  
+ Max.   :67.933  
+ NA's   :58      
+> t.test(temp[marij==0],alternative=c("two.sided"),mu=0,conf.level=0.95)
+
+	One Sample t-test
+
+data:  temp[marij == 0]
+t = -0.20934, df = 11, p-value = 0.838
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ -0.6716354  0.5549687
+sample estimates:
+  mean of x 
+-0.05833333 
+
+> summary(temp[marij==0])
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.     NA's 
+-2.20000 -0.75000  0.25000 -0.05833  0.52500  1.20000      127 
+> mean(temp[marij==0])
+[1] NA
+> summary(temp[marij==0])
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.     NA's 
+-2.20000 -0.75000  0.25000 -0.05833  0.52500  1.20000      127 
+> head(spont)
+Error in head(spont) : object 'spont' not found
+> head(spon)
+[1] 147  92  95 119  82  81
+> sp.data<-read.csv("/Users/valleriealiciat/Downloads/sp.csv")
+> attach(sp.data)
+> tm.data<-read.csv("/Users/valleriealiciat/Downloads/tm.csv")
+> attach(tm.data)
+The following objects are masked from marij.data:
+
+    X, X.1
+
+> 
+> t.test(marij0,marij10)
+
+	Welch Two Sample t-test
+
+data:  marij0 and marij10
+t = 3.9957, df = 21.063, p-value = 0.0006533
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 27.25904 86.40762
+sample estimates:
+mean of x mean of y 
+ 80.75000  23.91667 
+
+> t.test(marij0,marij5)
+
+	Welch Two Sample t-test
+
+data:  marij0 and marij5
+t = 4.2604, df = 21.973, p-value = 0.0003201
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 27.15604 78.67729
+sample estimates:
+mean of x mean of y 
+ 80.75000  27.83333 
+
+> t.test(marij0,marij2.5)
+
+	Welch Two Sample t-test
+
+data:  marij0 and marij2.5
+t = -0.15458, df = 18.589, p-value = 0.8788
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -37.61370  32.44703
+sample estimates:
+mean of x mean of y 
+ 80.75000  83.33333 
+
+> t.test(marij0,marij1)
+
+	Welch Two Sample t-test
+
+data:  marij0 and marij1
+t = -1.8724, df = 14.786, p-value = 0.08106
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -92.189546   6.022879
+sample estimates:
+mean of x mean of y 
+  80.7500  123.8333 
+
+> t.test(mari0,mari10)
+
+	Welch Two Sample t-test
+
+data:  mari0 and mari10
+t = 14.765, df = 20.566, p-value = 2.052e-12
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 4.445166 5.904834
+sample estimates:
+  mean of x   mean of y 
+-0.05833333 -5.23333333 
+
+> t.test(mari0,mari5)
+
+	Welch Two Sample t-test
+
+data:  mari0 and mari5
+t = 10.207, df = 21.817, p-value = 9.059e-10
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 3.067409 4.632591
+sample estimates:
+  mean of x   mean of y 
+-0.05833333 -3.90833333 
+
+> 
+> t.test(mari0,mari2.5)
+
+	Welch Two Sample t-test
+
+data:  mari0 and mari2.5
+t = 4.9458, df = 21.026, p-value = 6.789e-05
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 1.275014 3.124986
+sample estimates:
+  mean of x   mean of y 
+-0.05833333 -2.25833333 
+
+> 
+> t.test(mari0,mari1)
+
+	Welch Two Sample t-test
+
+data:  mari0 and mari1
+t = 0.76492, df = 18.226, p-value = 0.4541
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.7121949  1.5288616
+sample estimates:
+  mean of x   mean of y 
+-0.05833333 -0.46666667 
+
+> install.packages("car")
+--- Please select a CRAN mirror for use in this session ---
+also installing the dependencies ‘cpp11’, ‘mime’, ‘cli’, ‘clipr’, ‘crayon’, ‘BH’, ‘rematch’, ‘prettyunits’, ‘utf8’, ‘backports’, ‘ellipsis’, ‘generics’, ‘glue’, ‘purrr’, ‘rlang’, ‘stringr’, ‘tidyr’, ‘lifecycle’, ‘R6’, ‘tidyselect’, ‘vctrs’, ‘evaluate’, ‘highr’, ‘markdown’, ‘yaml’, ‘xfun’, ‘matrixStats’, ‘RcppArmadillo’, ‘forcats’, ‘hms’, ‘readr’, ‘cellranger’, ‘progress’, ‘zip’, ‘stringi’, ‘fansi’, ‘pillar’, ‘pkgconfig’, ‘broom’, ‘dplyr’, ‘magrittr’, ‘numDeriv’, ‘knitr’, ‘SparseM’, ‘MatrixModels’, ‘conquer’, ‘sp’, ‘haven’, ‘curl’, ‘data.table’, ‘readxl’, ‘openxlsx’, ‘tibble’, ‘minqa’, ‘nloptr’, ‘statmod’, ‘Rcpp’, ‘RcppEigen’, ‘carData’, ‘abind’, ‘pbkrtest’, ‘quantreg’, ‘maptools’, ‘rio’, ‘lme4’
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/cpp11_0.2.7.tgz'
+Content type 'application/x-gzip' length 194061 bytes (189 KB)
+==================================================
+downloaded 189 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/mime_0.10.tgz'
+Content type 'application/x-gzip' length 35402 bytes (34 KB)
+==================================================
+downloaded 34 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/cli_2.4.0.tgz'
+Content type 'application/x-gzip' length 496473 bytes (484 KB)
+==================================================
+downloaded 484 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/clipr_0.7.1.tgz'
+Content type 'application/x-gzip' length 48725 bytes (47 KB)
+==================================================
+downloaded 47 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/crayon_1.4.1.tgz'
+Content type 'application/x-gzip' length 139916 bytes (136 KB)
+==================================================
+downloaded 136 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/BH_1.75.0-0.tgz'
+Content type 'application/x-gzip' length 12149712 bytes (11.6 MB)
+==================================================
+downloaded 11.6 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/rematch_1.0.1.tgz'
+Content type 'application/x-gzip' length 12214 bytes (11 KB)
+==================================================
+downloaded 11 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/prettyunits_1.1.1.tgz'
+Content type 'application/x-gzip' length 34704 bytes (33 KB)
+==================================================
+downloaded 33 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/utf8_1.2.1.tgz'
+Content type 'application/x-gzip' length 196809 bytes (192 KB)
+==================================================
+downloaded 192 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/backports_1.2.1.tgz'
+Content type 'application/x-gzip' length 86201 bytes (84 KB)
+==================================================
+downloaded 84 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/ellipsis_0.3.1.tgz'
+Content type 'application/x-gzip' length 33497 bytes (32 KB)
+==================================================
+downloaded 32 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/generics_0.1.0.tgz'
+Content type 'application/x-gzip' length 69334 bytes (67 KB)
+==================================================
+downloaded 67 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/glue_1.4.2.tgz'
+Content type 'application/x-gzip' length 139018 bytes (135 KB)
+==================================================
+downloaded 135 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/purrr_0.3.4.tgz'
+Content type 'application/x-gzip' length 417900 bytes (408 KB)
+==================================================
+downloaded 408 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/rlang_0.4.10.tgz'
+Content type 'application/x-gzip' length 1327903 bytes (1.3 MB)
+==================================================
+downloaded 1.3 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/stringr_1.4.0.tgz'
+Content type 'application/x-gzip' length 210650 bytes (205 KB)
+==================================================
+downloaded 205 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/tidyr_1.1.3.tgz'
+Content type 'application/x-gzip' length 959468 bytes (936 KB)
+==================================================
+downloaded 936 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/lifecycle_1.0.0.tgz'
+Content type 'application/x-gzip' length 93309 bytes (91 KB)
+==================================================
+downloaded 91 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/R6_2.5.0.tgz'
+Content type 'application/x-gzip' length 82447 bytes (80 KB)
+==================================================
+downloaded 80 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/tidyselect_1.1.0.tgz'
+Content type 'application/x-gzip' length 197492 bytes (192 KB)
+==================================================
+downloaded 192 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/vctrs_0.3.7.tgz'
+Content type 'application/x-gzip' length 1410136 bytes (1.3 MB)
+==================================================
+downloaded 1.3 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/evaluate_0.14.tgz'
+Content type 'application/x-gzip' length 74355 bytes (72 KB)
+==================================================
+downloaded 72 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/highr_0.9.tgz'
+Content type 'application/x-gzip' length 39027 bytes (38 KB)
+==================================================
+downloaded 38 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/markdown_1.1.tgz'
+Content type 'application/x-gzip' length 198809 bytes (194 KB)
+==================================================
+downloaded 194 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/yaml_2.2.1.tgz'
+Content type 'application/x-gzip' length 203104 bytes (198 KB)
+==================================================
+downloaded 198 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/xfun_0.22.tgz'
+Content type 'application/x-gzip' length 314890 bytes (307 KB)
+==================================================
+downloaded 307 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/matrixStats_0.58.0.tgz'
+Content type 'application/x-gzip' length 2019783 bytes (1.9 MB)
+==================================================
+downloaded 1.9 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/RcppArmadillo_0.10.4.0.0.tgz'
+Content type 'application/x-gzip' length 1880523 bytes (1.8 MB)
+==================================================
+downloaded 1.8 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/forcats_0.5.1.tgz'
+Content type 'application/x-gzip' length 354051 bytes (345 KB)
+==================================================
+downloaded 345 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/hms_1.0.0.tgz'
+Content type 'application/x-gzip' length 97752 bytes (95 KB)
+==================================================
+downloaded 95 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/readr_1.4.0.tgz'
+Content type 'application/x-gzip' length 2450519 bytes (2.3 MB)
+==================================================
+downloaded 2.3 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/cellranger_1.1.0.tgz'
+Content type 'application/x-gzip' length 101697 bytes (99 KB)
+==================================================
+downloaded 99 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/progress_1.2.2.tgz'
+Content type 'application/x-gzip' length 83458 bytes (81 KB)
+==================================================
+downloaded 81 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/zip_2.1.1.tgz'
+Content type 'application/x-gzip' length 211635 bytes (206 KB)
+==================================================
+downloaded 206 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/stringi_1.5.3.tgz'
+Content type 'application/x-gzip' length 13641892 bytes (13.0 MB)
+==================================================
+downloaded 13.0 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/fansi_0.4.2.tgz'
+Content type 'application/x-gzip' length 212149 bytes (207 KB)
+==================================================
+downloaded 207 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/pillar_1.6.0.tgz'
+Content type 'application/x-gzip' length 1002593 bytes (979 KB)
+==================================================
+downloaded 979 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/pkgconfig_2.0.3.tgz'
+Content type 'application/x-gzip' length 17738 bytes (17 KB)
+==================================================
+downloaded 17 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/broom_0.7.6.tgz'
+Content type 'application/x-gzip' length 1777025 bytes (1.7 MB)
+==================================================
+downloaded 1.7 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/dplyr_1.0.5.tgz'
+Content type 'application/x-gzip' length 1251016 bytes (1.2 MB)
+==================================================
+downloaded 1.2 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/magrittr_2.0.1.tgz'
+Content type 'application/x-gzip' length 224854 bytes (219 KB)
+==================================================
+downloaded 219 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/numDeriv_2016.8-1.1.tgz'
+Content type 'application/x-gzip' length 113169 bytes (110 KB)
+==================================================
+downloaded 110 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/knitr_1.32.tgz'
+Content type 'application/x-gzip' length 1403226 bytes (1.3 MB)
+==================================================
+downloaded 1.3 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/SparseM_1.81.tgz'
+Content type 'application/x-gzip' length 1098071 bytes (1.0 MB)
+==================================================
+downloaded 1.0 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/MatrixModels_0.5-0.tgz'
+Content type 'application/x-gzip' length 449977 bytes (439 KB)
+==================================================
+downloaded 439 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/conquer_1.0.2.tgz'
+Content type 'application/x-gzip' length 872031 bytes (851 KB)
+==================================================
+downloaded 851 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/sp_1.4-5.tgz'
+Content type 'application/x-gzip' length 1846583 bytes (1.8 MB)
+==================================================
+downloaded 1.8 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/haven_2.4.0.tgz'
+Content type 'application/x-gzip' length 970316 bytes (947 KB)
+==================================================
+downloaded 947 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/curl_4.3.tgz'
+Content type 'application/x-gzip' length 741519 bytes (724 KB)
+==================================================
+downloaded 724 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/data.table_1.14.0.tgz'
+Content type 'application/x-gzip' length 2338988 bytes (2.2 MB)
+==================================================
+downloaded 2.2 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/readxl_1.3.1.tgz'
+Content type 'application/x-gzip' length 1676952 bytes (1.6 MB)
+==================================================
+downloaded 1.6 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/openxlsx_4.2.3.tgz'
+Content type 'application/x-gzip' length 3027965 bytes (2.9 MB)
+==================================================
+downloaded 2.9 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/tibble_3.1.1.tgz'
+Content type 'application/x-gzip' length 804527 bytes (785 KB)
+==================================================
+downloaded 785 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/minqa_1.2.4.tgz'
+Content type 'application/x-gzip' length 341728 bytes (333 KB)
+==================================================
+downloaded 333 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/nloptr_1.2.2.2.tgz'
+Content type 'application/x-gzip' length 945144 bytes (922 KB)
+==================================================
+downloaded 922 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/statmod_1.4.35.tgz'
+Content type 'application/x-gzip' length 270733 bytes (264 KB)
+==================================================
+downloaded 264 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/Rcpp_1.0.6.tgz'
+Content type 'application/x-gzip' length 3203922 bytes (3.1 MB)
+==================================================
+downloaded 3.1 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/RcppEigen_0.3.3.9.1.tgz'
+Content type 'application/x-gzip' length 4850245 bytes (4.6 MB)
+==================================================
+downloaded 4.6 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/carData_3.0-4.tgz'
+Content type 'application/x-gzip' length 1819549 bytes (1.7 MB)
+==================================================
+downloaded 1.7 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/abind_1.4-5.tgz'
+Content type 'application/x-gzip' length 61580 bytes (60 KB)
+==================================================
+downloaded 60 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/pbkrtest_0.5.1.tgz'
+Content type 'application/x-gzip' length 352812 bytes (344 KB)
+==================================================
+downloaded 344 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/quantreg_5.85.tgz'
+Content type 'application/x-gzip' length 1632529 bytes (1.6 MB)
+==================================================
+downloaded 1.6 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/maptools_1.1-1.tgz'
+Content type 'application/x-gzip' length 2173361 bytes (2.1 MB)
+==================================================
+downloaded 2.1 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/rio_0.5.26.tgz'
+Content type 'application/x-gzip' length 474651 bytes (463 KB)
+==================================================
+downloaded 463 KB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/lme4_1.1-26.tgz'
+Content type 'application/x-gzip' length 7314445 bytes (7.0 MB)
+==================================================
+downloaded 7.0 MB
+
+trying URL 'https://repo.bppt.go.id/cran/bin/macosx/contrib/4.0/car_3.0-10.tgz'
+Content type 'application/x-gzip' length 1561683 bytes (1.5 MB)
+==================================================
+downloaded 1.5 MB
+
+
+The downloaded binary packages are in
+	/var/folders/bb/sb0ff6fd5vd6psh63phrn4c00000gn/T//RtmpMQPG1I/downloaded_packages
+df
+> library("car")
+Loading required package: carData
+> qqPlot(marij.data[,2],main="Normal QQ Plot of Spontaneous Activity")
+[1] 13 17
+> qqline(marij.data[,3])
+> qqline(marij.data[,3],col="blue")
+> qqnorm(marij.data[,3],main="Change in Temperature")
+> qqline(marij.data[,3],col="blue")
+> qqPlot(marij.data[,3],main="Normal QQ Plot of Change in Temperature")
+[1] 49 50
+> hist(marij.data[,2],xlab="Spontaneous Activity Level",main="Spontaneous Activity")
+> hist(marij.data[,3],xlab="Change in Temperature",main="Temperature")
+> boxplot(sp, xaxt='n', xlab= "Dose of Marijuana (mg/kg)", ylab="Level of Spontaneous Activity")
+> axis(side=1,at=1:5,labels=c("0","1","2.5","5","10"))
+> boxplot(tm, xaxt='n', xlab= "Dose of Marijuana (mg/kg)", ylab="Change in Body Temperature")
+> axis(side=1,at=1:5,labels=c("0","1","2.5","5","10"))
+> qqPlot(marij.data[,2], xlab="Theoretical Quintiles", ylab="Sample Quantiles",main="Normal QQ Plot of Spontaneous Activity")
+> qqPlot(marij.data[,3],xlab="Theoretical Quintiles", ylab="Sample Quantiles",main="Normal QQ Plot of Change in Temperature")
+
